@@ -6,6 +6,6 @@ export const fetchData = async () => {
   const res = await fetch(url, { cache: 'no-store' });
   const csv = await res.text();
   const parsedData = Papa.parse(csv, { header: true }).data;
-  
+
   return parsedData;
 }

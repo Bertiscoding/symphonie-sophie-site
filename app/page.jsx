@@ -1,4 +1,4 @@
-import { fetchData } from "./utils/fetchData";
+import { fetchData } from "@/app/utils/fetchData";
 import BackgroundImgWithText from "./components/BackgroundImgWithText";
 import Image from "next/image.js";
 import Button from "./components/Button";
@@ -9,7 +9,7 @@ const Homepage = async (context) => {
   const fetchContent = await fetchData();
   const slug = context?.params?.slug || "/";
   const content = fetchContent.find((row) => row.slug === slug);
-
+  
   const {
     header_img,
     header_title,
@@ -19,6 +19,17 @@ const Homepage = async (context) => {
     top_section_btnlink,
     productcard_count,
   } = content || {};
+
+  const productCards = [];
+
+  for (let i = 1; i <= productcard_count; i++) {
+    productCards.push({
+      title: content[`productcard_title_${i}`],
+      body: content[`productcard_body_${i}`],
+      btnlink: content[`productcard_btnlink_${i}`],
+      img: content[`productcard_img_${i}`],
+    });
+  }
 
   return (
     <>
@@ -50,9 +61,22 @@ const Homepage = async (context) => {
         )}
         <div className="bg-ss-seashell p-10">
           <div className="md:container">
-            {productcard_count && (
-              <ProductCard />
-            )}
+          {productcard_count && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {productCards.map((card, index) => {
+                return (
+                  <div key={index}>
+                  <ProductCard
+                    bgImgUrl={card.img}
+                    title={card.title}
+                    text={card.body}
+                    link={card.btnlink}
+                  />
+                </div>
+                )
+              })}
+            </div>
+          )}
           </div>
         </div>
       </main>

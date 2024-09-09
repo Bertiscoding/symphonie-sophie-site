@@ -7,7 +7,8 @@ const Button = (props) => {
   return (
     <Link
       href={btnLink}
-      className={`bg-ss-green hover:bg-ss-green-mute rounded w-52 py-1.5 px-4 ${btnClassNames}`}
+      className={`bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4
+        ${btnClassNames ? btnClassNames : ''}`}
     >
       <div className="flex justify-between text-ss-p-med text-ss-black">
         <span>{btnText}</span>

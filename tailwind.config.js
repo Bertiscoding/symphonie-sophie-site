@@ -21,6 +21,7 @@ module.exports = {
       },
       fontSize: {
         'ss-h1': ['36px', { fontWeight: '500' }],
+        'ss-h2': ['24px', { fontWeight: '600' }],
         'ss-h3': ['24px', { fontWeight: '500' }],
         'ss-p-med': ['16px', { fontWeight: '500' }],
         'ss-p-reg': ['16px', { fontWeight: '400' }],
