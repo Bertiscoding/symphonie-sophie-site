@@ -28,8 +28,15 @@ const RequestForm = () => {
     });
 
     if (res.ok) {
-      setSuccess(true)
-      setError(false)
+      setTimeout(() => {
+        setSuccess(true);
+
+        setTimeout(() => {
+          setSuccess(false);
+        }, 7000);
+    
+      }, 10000); 
+      setError(false);
       setFormData({
         name: '',
         email: '',
@@ -38,76 +45,80 @@ const RequestForm = () => {
         message: '',
       });
     } else {
-      setSuccess(false)
-      setError(true)
+      setSuccess(false);
+      setError(true);
     }
   };
 
   return (
-    <div>
-      {/* {!success ? ( */}
-        <form onSubmit={handleSubmit} className="space-y-4 text-ss-p-med">
-          <div className="w-full md:flex md:justify-between">
-            <div className="w-full md:w-[46%]">
-              <label htmlFor="name" className="text-ss-black">Vorname Nachname:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full rounded p-2"
-                required
-              />
-            </div>
-            <div className="w-full md:w-[46%]">
-              <label htmlFor="email" className="text-ss-black">E-Mail-Adresse</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full rounded p-2"
-                required
-              />
-            </div>
+    <>
+      <form onSubmit={handleSubmit} className="space-y-4 text-ss-p-med">
+        <div className="w-full md:flex md:justify-between">
+          <div className="w-full md:w-[46%]">
+            <label htmlFor="name" className="text-ss-bordeaux">Vorname Nachname:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              required
+              disabled={success ? true : ""}
+            />
           </div>
-
-          <div className="w-full md:flex md:justify-between">
-            <div className="w-full md:w-[46%]">
-              <label htmlFor="phone" className="text-ss-black">Telefonnummer:</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full rounded p-2"
-              />
-            </div>
-            <div className="w-full md:w-[46%]">
-              <label htmlFor="wunschtermin" className="text-ss-black">Mögliche Wunschtermine:</label>
-              <input
-                type="text"
-                id="wunschtermin"
-                name="wunschtermin"
-                value={formData.wunschtermin}
-                onChange={handleChange}
-                className="w-full rounded p-2"
-              />
+          <div className="w-full md:w-[46%]">
+            <label htmlFor="email" className="text-ss-bordeaux">E-Mail-Adresse</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              required
+              disabled={success ? true : ""}
+            />
           </div>
         </div>
+
+        <div className="w-full md:flex md:justify-between">
+          <div className="w-full md:w-[46%]">
+            <label htmlFor="phone" className="text-ss-bordeaux">Telefonnummer:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              disabled={success ? true : ""}
+            />
+          </div>
+          <div className="w-full md:w-[46%]">
+            <label htmlFor="wunschtermin" className="text-ss-bordeaux">Mögliche Wunschtermine:</label>
+            <input
+              type="text"
+              id="wunschtermin"
+              name="wunschtermin"
+              value={formData.wunschtermin}
+              onChange={handleChange}
+              className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              disabled={success ? true : ""}
+            />
+        </div>
+        </div>
         <div className="w-full">
-          <label htmlFor="message" className="text-ss-black">Deine Nachricht:</label>
+          <label htmlFor="message" className="text-ss-bordeaux">Deine Nachricht:</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full rounded p-2"
+            className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
             rows={4}
             required
+            disabled={success ? true : ""}
           ></textarea>
         </div>
         {error && (
@@ -120,21 +131,22 @@ const RequestForm = () => {
             <span>Leider ist etwas schief gelaufen.</span>
           </div>
         )}
-        <button type="submit" className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4">
-        <div className="flex justify-between text-ss-p-med text-ss-black">
-          <span>
-            Abschicken
-          </span>
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </span>
-        </div>
+        <button type="submit" disabled={success ? true : undefined}
+                className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed">
+          <div className="flex justify-between text-ss-p-med text-ss-black">
+            <span>
+              Abschicken
+            </span>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </span>
+          </div>
         </button>
       </form>
-      {/* ):(
-        <div className="flex flex-col items-center bg-ss-success text-white rounded p-4 font-bold">
+      {success && (
+        <div className="flex flex-col items-center bg-ss-success text-white rounded p-4 mt-6 font-bold">
           <span className="mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-16">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -142,8 +154,8 @@ const RequestForm = () => {
           </span>
           <span className="text-center">Nachricht wurde verschickt.<br/> Ich werde mich umgehend bei Dir melden.</span>
         </div>
-      )}  */}
-    </div>
+      )}
+    </>
   )
 }
 export default RequestForm

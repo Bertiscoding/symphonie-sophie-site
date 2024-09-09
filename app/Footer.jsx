@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import RequestForm from "./components/RequestForm"
+import dynamic from "next/dynamic"
+
+const RequestForm = dynamic(() => import("./components/RequestForm"), { ssr: false });
 
 const Footer = () => {
   return (
@@ -48,8 +50,11 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center p-10 bg-cover bg-center bg-no-repeat h-full w-auto"
-          style={{backgroundImage: "linear-gradient( rgba(248, 237, 235, 0.5), rgba(248, 237, 235, 0.5) ), url('https://res.cloudinary.com/dxon4wo2t/image/upload/v1725813034/gutscheine-pinkflowers-min_bjkbpk.jpg')"}}
+        <div className="flex justify-center items-center p-10 bg-cover bg-bottom bg-no-repeat h-full w-auto"
+              style={{
+                backgroundImage:
+                  "linear-gradient( rgba(244, 241, 240, 0.8), rgba(244, 241, 240, 0.8) ), url('https://res.cloudinary.com/dxon4wo2t/image/upload/v1725813033/bottom-pebbles-min_hpug7m.jpg')",
+              }}
         >
           <div className="w-full md:w-[500px] min-h-[520px]">
             <h3 className="text-ss-h1 mb-8 text-ss-bordeaux">Terminanfragen</h3>
@@ -59,7 +64,7 @@ const Footer = () => {
       </div>
       <div className="bg-ss-black p-10">
         <div className="container md:flex md:justify-between">
-          <div className="text-white text-xs text-bold flex flex-col">
+          <div className="text-white text-xs font-semibold flex flex-col">
             <Link className="mb-6" href='/impressum'>Impressum</Link>
             <Link className="mb-6" href='/datenschutz'>Datenschutz</Link>
             <Link className="mb-6" href='/haeufige-fragen'>Häufige Fragen</Link>
@@ -69,14 +74,14 @@ const Footer = () => {
             <Image
               src="https://res.cloudinary.com/dxon4wo2t/image/upload/v1725905321/symphonie-sophie-logo-sm_white_mahkuj.svg"
               alt="symphonie sophie logo"
-              className="my-2"
+              className="my-2 h-[70px] w-auto"
               width={0}
               height={70}
             />
             <Image
-              src="https://res.cloudinary.com/dxon4wo2t/image/upload/v1725905531/doterra-wellness-advocate-colors_wb7qd8.png"
+              src="https://media.doterra.com/us/en/images/logo/doterra-wellness-advocate-colors.png"
               alt="sophie schmidt doterra logo"
-              className="my-2"
+              className="my-2 h-[70px] w-auto"
               width={0}
               height={70}
             />

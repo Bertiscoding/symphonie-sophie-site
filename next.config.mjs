@@ -8,6 +8,10 @@ const nextConfig = {
         port: '',
         pathname: '/dxon4wo2t/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'media.doterra.com',
+      }
     ],
   },
 };
