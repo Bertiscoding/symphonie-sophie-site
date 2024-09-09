@@ -15,12 +15,16 @@ module.exports = {
         "ss-green-mute": "#AFD0A4",
         "ss-black": "#181F25",
         "ss-bordeaux": "#92374D",
+        "ss-error": "#EA526F",
+        "ss-success": "#69B578"
       },
       backgroundImage: {
         'gradient-dark': 'linear-gradient(180deg, #181F25 30%, #181F25 30%)',
+        'gradient-light': 'linear-gradient(180deg, #F8EDEB 30%, #F8EDEB 30%)',
+
       },
       fontSize: {
-        'ss-h1': ['36px', { fontWeight: '500' }],
+        'ss-h1': ['36px', { fontWeight: '600' }],
         'ss-h2': ['24px', { fontWeight: '600' }],
         'ss-h3': ['24px', { fontWeight: '500' }],
         'ss-p-med': ['16px', { fontWeight: '500' }],
