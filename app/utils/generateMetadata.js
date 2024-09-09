@@ -1,19 +1,18 @@
 import { fetchData } from "@/app/utils/fetchData"
 
-export const generateMetadata = async () => {
+export const generateMetadata = async (slug) => {
   const fetchMetadata = await fetchData();
-  const getMetadataRow = fetchMetadata.find((row) => row.slug === "/aetherische-oele");
+  const metadataRow = fetchMetadata.find((row) => row.slug === slug);
 
-  const { page, meta_description } = getMetadataRow || {};
+  const { page, meta_description } = metadataRow || {}
 
   return {
-    title: `${page} | Symphonie Sophie` || "Symphonie Sophie | Aroma Massage & Beratung Berlin",
+    title: page || "Symphonie Sophie | Aroma Massage & Beratung Berlin",
     description: meta_description || "Studio Symphonie Sophie bietet Aroma Massagen & Beratung an, sowie Beratung zum Einsatz von ätherischen Ölen in Berlin-Neukölln.",
     openGraph: {
-      title: `${page} | Symphonie Sophie` || "Symphonie Sophie | Aroma Massage & Beratung Berlin",
+      title: page || "Symphonie Sophie | Aroma Massage & Beratung Berlin",
       description: meta_description || "Studio Symphonie Sophie bietet Aroma Massagen & Beratung an, sowie Beratung zum Einsatz von ätherischen Ölen in Berlin-Neukölln.",
-      url: "https://symphonie-sophie.de/aetherische-oele",
-      type: "website",
+      url: `https://symphonie-sophie.de${slug}`,
       images: [
         {
           url: "/images/symphonie-sophie-logo-lg_peach.png",
@@ -25,11 +24,3 @@ export const generateMetadata = async () => {
     },
   }
 }
-
-const AetherischeOele = () => {
-  return (
-    <h1>Ätherische Öle</h1>
-  );
-}
-
-export default AetherischeOele
