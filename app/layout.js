@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
+import Footer from "./Footer";
 
 const notoSans = localFont({
   src: [
@@ -48,7 +49,7 @@ export default function RootLayout({ children }) {
       <body className={`${notoSans.variable} antialiased`}>
         {/* Navigation */}
         {children}
-        {/* Footer */}
+        <Footer />
       </body>
     </html>
   );

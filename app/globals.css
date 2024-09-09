@@ -10,3 +10,7 @@
 body {
   font-family: Noto Sans, Helvetica, Arial, sans-serif;
 }
+
+.footer__form-bg {
+  backgroundImage: "linear-gradient( rgba(248, 237, 235, 0.5), rgba(248, 237, 235, 0.5) ), url('https://res.cloudinary.com/dxon4wo2t/image/upload/v1725813034/gutscheine-pinkflowers-min_bjkbpk.jpg')";
+}
