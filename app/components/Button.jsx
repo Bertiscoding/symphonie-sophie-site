@@ -10,7 +10,7 @@ const Button = (props) => {
       className={`bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4
         ${btnClassNames ? btnClassNames : ''}`}
     >
-      <div className="flex justify-between text-ss-p-med text-ss-black">
+      <div className="flex justify-between text-ss-p-smbold text-ss-black">
         <span>{btnText}</span>
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

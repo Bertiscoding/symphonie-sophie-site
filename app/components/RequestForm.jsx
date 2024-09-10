@@ -55,27 +55,27 @@ const RequestForm = () => {
       <form onSubmit={handleSubmit} className="space-y-4 text-ss-p-med">
         <div className="w-full md:flex md:justify-between">
           <div className="w-full md:w-[46%]">
-            <label htmlFor="name" className="text-ss-bordeaux">Vorname Nachname:</label>
+            <label htmlFor="name" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">Vorname Nachname:</label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               required
               disabled={success ? true : ""}
             />
           </div>
           <div className="w-full md:w-[46%]">
-            <label htmlFor="email" className="text-ss-bordeaux">E-Mail-Adresse</label>
+            <label htmlFor="email" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">E-Mail-Adresse</label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               required
               disabled={success ? true : ""}
             />
@@ -84,38 +84,38 @@ const RequestForm = () => {
 
         <div className="w-full md:flex md:justify-between">
           <div className="w-full md:w-[46%]">
-            <label htmlFor="phone" className="text-ss-bordeaux">Telefonnummer:</label>
+            <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">Telefonnummer:</label>
             <input
               type="tel"
               id="phone"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               disabled={success ? true : ""}
             />
           </div>
           <div className="w-full md:w-[46%]">
-            <label htmlFor="wunschtermin" className="text-ss-bordeaux">Mögliche Wunschtermine:</label>
+            <label htmlFor="wunschtermin" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">Mögliche Wunschtermine:</label>
             <input
               type="text"
               id="wunschtermin"
               name="wunschtermin"
               value={formData.wunschtermin}
               onChange={handleChange}
-              className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               disabled={success ? true : ""}
             />
         </div>
         </div>
         <div className="w-full">
-          <label htmlFor="message" className="text-ss-bordeaux">Deine Nachricht:</label>
+          <label htmlFor="message" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">Deine Nachricht:</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full rounded p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+            className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
             rows={4}
             required
             disabled={success ? true : ""}
@@ -133,7 +133,7 @@ const RequestForm = () => {
         )}
         <button type="submit" disabled={success ? true : undefined}
                 className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed">
-          <div className="flex justify-between text-ss-p-med text-ss-black">
+          <div className="flex justify-between text-ss-p-smbold text-ss-black">
             <span>
               Abschicken
             </span>

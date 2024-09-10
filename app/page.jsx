@@ -34,7 +34,11 @@ const Homepage = async (context) => {
   return (
     <>
       <header>
-        <BackgroundImgWithText bgImgUrl={header_img}>
+        <BackgroundImgWithText
+          bgImgUrl={header_img}
+          bgHeight="h-[339px]"
+          wrapperClassNames="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-1/2"
+        >
           <Image
             src="/images/symphonie-sophie-logo-lg_white.svg"
             alt="Symphonie Sophie Logo"
