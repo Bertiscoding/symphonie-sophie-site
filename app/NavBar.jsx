@@ -36,7 +36,7 @@ const NavItems = (props) => {
       }
     }, [navOpen])
 
-  const openNavClassNames = `h-screen bg-ss-champagne absolute right-0 top-0 px-10 w-80 drop-shadow-md z-40 transition-transform duration-500 ease-linear ${
+  const openNavClassNames = `h-screen bg-ss-champagne absolute right-0 top-0 px-10 w-80 max-h-[800px] overflow-scroll drop-shadow-md z-40 transition-transform duration-500 ease-linear ${
     navOpen ? 'translate-x-0' : 'translate-x-full'
   }`
 
