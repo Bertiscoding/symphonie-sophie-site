@@ -19,8 +19,8 @@ module.exports = {
         "ss-success": "#69B578"
       },
       backgroundImage: {
-        'gradient-dark': 'linear-gradient(180deg, #181F25 30%, #181F25 30%)',
-        'gradient-light': 'linear-gradient(180deg, #F8EDEB 30%, #F8EDEB 30%)',
+        'ss-gradient-dark': 'linear-gradient(180deg, #181F25 30%, #181F25 30%)',
+        'ss-gradient-light': 'linear-gradient(180deg, #F8EDEB 30%, #F8EDEB 30%)',
 
       },
       fontSize: {
@@ -30,6 +30,7 @@ module.exports = {
         'ss-p-med': ['16px', { fontWeight: '500' }],
         'ss-p-reg': ['16px', { fontWeight: '400' }],
         'ss-p-smbold': ['16px', { fontWeight: '600' }],
+        'ss-p-xs-smbold': ['12px', { fontWeight: '600' }],
       },
       container: {
         center: true,
