@@ -10,3 +10,9 @@
 body {
   font-family: Noto Sans, Helvetica, Arial, sans-serif;
 }
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 12px;
+  font-style: italic;
+}

@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Head from "next/head";
 import Footer from "./Footer";
+import Navigation from "./Navigation";
 
 const notoSans = localFont({
   src: [
@@ -21,7 +21,7 @@ export const metadata = {
   openGraph: {
     title: "Symphonie Sophie | Aroma Massage & Beratung Berlin",
     description: "Studio Symphonie Sophie bietet Aroma Massagen & Beratung an, sowie Beratung zum Einsatz von ätherischen Ölen in Berlin-Neukölln.",
-    url: "https://symphonie-sophie.de/",
+    url: "https://symphonie-sophie.com/",
     type: "website",
     images: [
       {
@@ -37,17 +37,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="de">
-      <Head>
-        <title>{metadata.title}</title>
-        <meta property="og:title" content={metadata.title} />
-        <meta name="description" content={metadata.description} />
-        <meta property="og:type" content={metadata.openGraph.type} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:image" content={metadata.openGraph.images.url} />
-        <meta property="og:description" content={metadata.description} />
-      </Head>
-      <body className={`${notoSans.variable} antialiased`}>
-        {/* Navigation */}
+      <body className={`${notoSans.variable} antialiased relative`}>
+        <Navigation />
         {children}
         <Footer />
       </body>

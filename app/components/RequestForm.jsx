@@ -55,7 +55,9 @@ const RequestForm = () => {
       <form onSubmit={handleSubmit} className="space-y-4 text-ss-p-med">
         <div className="w-full md:flex md:justify-between">
           <div className="w-full md:w-[46%]">
-            <label htmlFor="name" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">Vorname Nachname:</label>
+            <label htmlFor="name" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+              Vorname Nachname:
+            </label>
             <input
               type="text"
               id="name"
@@ -65,10 +67,13 @@ const RequestForm = () => {
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               required
               disabled={success ? true : ""}
+              placeholder="(erforderlich)"
             />
           </div>
           <div className="w-full md:w-[46%]">
-            <label htmlFor="email" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">E-Mail-Adresse</label>
+            <label htmlFor="email" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+              E-Mail-Adresse:
+            </label>
             <input
               type="email"
               id="email"
@@ -78,13 +83,16 @@ const RequestForm = () => {
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               required
               disabled={success ? true : ""}
+              placeholder="(erforderlich)"
             />
           </div>
         </div>
 
         <div className="w-full md:flex md:justify-between">
           <div className="w-full md:w-[46%]">
-            <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">Telefonnummer:</label>
+            <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+              Telefonnummer:
+            </label>
             <input
               type="tel"
               id="phone"
@@ -93,10 +101,13 @@ const RequestForm = () => {
               onChange={handleChange}
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               disabled={success ? true : ""}
+              placeholder="(optional)"
             />
           </div>
           <div className="w-full md:w-[46%]">
-            <label htmlFor="wunschtermin" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">Mögliche Wunschtermine:</label>
+            <label htmlFor="wunschtermin" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+              Mögliche Wunschtermine:
+            </label>
             <input
               type="text"
               id="wunschtermin"
@@ -105,11 +116,14 @@ const RequestForm = () => {
               onChange={handleChange}
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               disabled={success ? true : ""}
+              placeholder="(optional)"
             />
         </div>
         </div>
         <div className="w-full">
-          <label htmlFor="message" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">Deine Nachricht:</label>
+          <label htmlFor="message" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+            Deine Nachricht:
+          </label>
           <textarea
             id="message"
             name="message"
@@ -119,6 +133,7 @@ const RequestForm = () => {
             rows={4}
             required
             disabled={success ? true : ""}
+            placeholder="(erforderlich)"
           ></textarea>
         </div>
         {error && (

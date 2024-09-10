@@ -12,7 +12,7 @@ export const generateMetadata = async (slug) => {
     openGraph: {
       title: page || "Symphonie Sophie | Aroma Massage & Beratung Berlin",
       description: meta_description || "Studio Symphonie Sophie bietet Aroma Massagen & Beratung an, sowie Beratung zum Einsatz von ätherischen Ölen in Berlin-Neukölln.",
-      url: `https://symphonie-sophie.de${slug}`,
+      url: `https://symphonie-sophie.com${slug}`,
       images: [
         {
           url: "/images/symphonie-sophie-logo-lg_peach.png",
