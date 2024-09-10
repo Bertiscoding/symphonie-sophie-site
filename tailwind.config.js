@@ -29,6 +29,7 @@ module.exports = {
         'ss-h3': ['24px', { fontWeight: '500' }],
         'ss-p-med': ['16px', { fontWeight: '500' }],
         'ss-p-reg': ['16px', { fontWeight: '400' }],
+        'ss-p-smbold': ['16px', { fontWeight: '600' }],
       },
       container: {
         center: true,

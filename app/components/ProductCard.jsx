@@ -1,6 +1,7 @@
 "use client"
 import Button from "./Button";
 import BackgroundImage from "./BackgroundImage";
+import { formatText } from "../utils/formatText";
 
 const ProductCard = (props) => {
   const { bgImgUrl, title, text, link } = props
@@ -12,7 +13,7 @@ const ProductCard = (props) => {
       </div>
       <div className="h-[340px] w-[346px] bg-white pt-16 rounded shadow-md flex flex-col items-center">
         <h2 className="text-ss-h2 text-ss-bordeaux text-center">{title}</h2>
-        <p className="text-ss-p-reg p-5">{text}</p>
+        <p className="text-ss-p-reg p-5">{formatText(text)}</p>
         <Button btnLink={link} btnText="Mehr Information"  />
       </div>
     </div>

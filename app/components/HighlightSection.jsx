@@ -1,4 +1,5 @@
 "use client"
+import { formatText } from "../utils/formatText"
 import BackgroundImage from "./BackgroundImage"
 import Button from "./Button"
 
@@ -12,7 +13,7 @@ const HighlightSection = (props) => {
           <div className="flex flex-col justify-around">
             <div>
               {title && ( <h3 className="text-ss-h3 mb-4 text-ss-bordeaux">{title}</h3> )}
-              <p className="text-ss-p-reg">{text}</p>
+              <p className="text-ss-p-reg">{formatText(text)}</p>
             </div>
             {btnLink && ( <Button btnLink={btnLink} btnText="Mehr erfahren" /> )}
           </div>

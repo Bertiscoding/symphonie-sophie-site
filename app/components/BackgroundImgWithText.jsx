@@ -1,14 +1,15 @@
 "use client";
 
-const BackgroundImgWithText = ({ bgImgUrl, bgWtClassNames, children }) => {
+const BackgroundImgWithText = ({ bgImgUrl, bgWtClassNames, wrapperClassNames, bgHeight, bgWidth, children }) => {
   if (!bgImgUrl || !children) return <p>Loading...</p>;
   
   return (
-    <div className={`relative bg-cover bg-center bg-no-repeat h-[339px] w-full
+    <div className={`relative bg-cover bg-center bg-no-repeat
+      ${bgHeight ? bgHeight : 'h-full'} ${bgWidth ? bgWidth : 'w-full'}
       ${bgWtClassNames ? bgWtClassNames : ''}`}
-      style={{backgroundImage: `linear-gradient( rgba(24, 31, 37, 0.4), rgba(24, 31, 37, 0.4) ), url(${bgImgUrl})`}}
+      style={{backgroundImage: `linear-gradient( rgba(24, 31, 37, 0.5), rgba(24, 31, 37, 0.5) ), url(${bgImgUrl})`}}
     >
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-1/2 flex flex-col items-center flex-1">
+      <div className={`flex flex-col items-center flex-1 ${wrapperClassNames ? wrapperClassNames : ''}`}>
         { children }
       </div>
     </div>
