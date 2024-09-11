@@ -16,3 +16,12 @@ textarea::placeholder {
   font-size: 12px;
   font-style: italic;
 }
+
+select {
+  color: #9ca3af;
+  font-size: 12px;
+  font-style: italic;
+}
+option:not(:first-of-type) {
+  color: #181F25;
+}
