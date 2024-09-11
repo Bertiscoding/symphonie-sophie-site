@@ -12,7 +12,8 @@ const NavItems = (props) => {
       <Link
         key={i}
         href={el.navLink}
-        className="text-ss-p-smbold py-2 underline underline-offset-4 decoration-ss-bordeaux"
+        onClick={() => setNavOpen(!navOpen)}
+        className="text-ss-p-smbold py-2 underline underline-offset-4 decoration-ss-bordeaux cursor-pointer"
       >
         {el.navText}
       </Link>

@@ -16,6 +16,11 @@ const notoSans = localFont({
 });
 
 export const metadata = {
+  charset: 'UTF-8',
+  other: {
+    'http-equiv': 'Content-Type',
+    content: 'text/html; charset=UTF-8'
+  },
   title: "Symphonie Sophie | Aroma Massage & Beratung Berlin",
   description: "Studio Symphonie Sophie bietet Aroma Massagen & Beratung an, sowie Beratung zum Einsatz von ätherischen Ölen in Berlin-Neukölln.",
   openGraph: {
