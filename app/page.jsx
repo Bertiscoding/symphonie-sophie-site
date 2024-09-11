@@ -5,9 +5,9 @@ import Button from "./components/Button";
 import HighlightSection from "./components/HighlightSection";
 import ProductCardCollection from "./components/ProductCards/ProductCardCollection";
 
-const Homepage = async ({ content }) => {
+const Homepage = async ({ params }) => {
   const fetchContent = await fetchData();
-  const slug = context?.params?.slug || "/";
+  const slug = params?.slug || "/";
   const content = fetchContent.find((row) => row.slug === slug);
 
   const {

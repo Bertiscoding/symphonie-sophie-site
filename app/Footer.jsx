@@ -3,7 +3,7 @@ import Link from "next/link"
 import dynamic from "next/dynamic"
 import BackgroundImgWithText from "./components/BackgroundImages/BackgroundImgWithText";
 
-const RequestForm = dynamic(() => import("./components/Forms/RequestForm"), { ssr: false });
+const MessageForm = dynamic(() => import("./components/Forms/MessageForm"), { ssr: false });
 
 const Footer = () => {
   return (
@@ -57,8 +57,8 @@ const Footer = () => {
           bgWtClassNames="p-10"
         >
           <div className="w-full md:w-[500px] min-h-[520px]">
-            <h3 className="text-ss-h1 mb-8 text-ss-seashell">Anfragen</h3>
-            <RequestForm />
+            <h3 className="text-ss-h1 mb-8 text-ss-seashell">Allgemeine Anfragen</h3>
+            <MessageForm />
           </div>
         </BackgroundImgWithText>
 
