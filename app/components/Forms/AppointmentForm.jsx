@@ -1,12 +1,21 @@
 "use client"
 import { useState } from "react"
+import { getServices } from "@/app/utils/getServices"
 
-const AppointmentForm = () => {
+const AppointmentForm = (props) => {
+
+  const serviceArray = getServices(props.services)
+  
+  const selectServices = serviceArray.map((el, i) => ( 
+    <option key={i} value={el.value}>{el.text}</option>
+  ))
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    pref_date: '',
+    service: '',
+    pref_dates: '',
     message: '',
   })
 
@@ -21,7 +30,7 @@ const AppointmentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('/api/send-email', {
+    const res = await fetch('/api/send-booking', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
@@ -41,7 +50,9 @@ const AppointmentForm = () => {
         name: '',
         email: '',
         phone: '',
-        wunschtermin: '',
+        service: '',
+        pref_dates: '',
+        message: '',
         message: '',
       });
     } else {
@@ -56,7 +67,7 @@ const AppointmentForm = () => {
         <div className="w-full md:flex md:justify-between">
           <div className="w-full md:w-[46%]">
             <label htmlFor="name" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
-              Vorname Nachname:
+              Name:
             </label>
             <input
               type="text"
@@ -70,25 +81,6 @@ const AppointmentForm = () => {
               placeholder="(erforderlich)"
             />
           </div>
-          <div className="w-full md:w-[46%]">
-            <label htmlFor="email" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
-              E-Mail-Adresse:
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
-              required
-              disabled={success ? true : ""}
-              placeholder="(erforderlich)"
-            />
-          </div>
-        </div>
-
-        <div className="w-full md:flex md:justify-between">
           <div className="w-full md:w-[46%]">
             <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               Telefonnummer:
@@ -104,25 +96,63 @@ const AppointmentForm = () => {
               placeholder="(optional)"
             />
           </div>
+        </div>
+
+        <div className="w-full md:flex md:justify-between">
+        <div className="w-full md:w-[46%]">
+            <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+              Behandlung:
+            </label>
+            <select
+              id="service"
+              name="service"
+              className="bg-white w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              value={formData.service}
+              onChange={handleChange}
+              required
+              disabled={success ? true : ""}
+            >
+              <option defaultValue>Bitte wählen... (erforderlich)</option>
+                { selectServices }
+            </select>
+          </div>
           <div className="w-full md:w-[46%]">
-            <label htmlFor="wunschtermin" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
-              Mögliche Wunschtermine:
+            <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+              Wunschtermine:
             </label>
             <input
-              type="text"
-              id="wunschtermin"
-              name="wunschtermin"
-              value={formData.wunschtermin}
+              type="tel"
+              id="pref_dates"
+              name="pref_dates"
+              value={formData.pref_dates}
               onChange={handleChange}
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              required
               disabled={success ? true : ""}
-              placeholder="(optional)"
+              placeholder="(erforderlich)"
             />
+          </div>
         </div>
+
+        <div className="w-full">
+          <label htmlFor="email" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+            E-Mail-Adresse:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+            required
+            disabled={success ? true : ""}
+            placeholder="(erforderlich)"
+          />
         </div>
         <div className="w-full">
           <label htmlFor="message" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
-            Deine Nachricht:
+            Anmerkung:
           </label>
           <textarea
             id="message"
@@ -131,11 +161,11 @@ const AppointmentForm = () => {
             onChange={handleChange}
             className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
             rows={4}
-            required
             disabled={success ? true : ""}
-            placeholder="(erforderlich)"
+            placeholder="(optional)"
           ></textarea>
         </div>
+
         {error && (
           <div className="flex bg-ss-error text-white rounded p-4 font-bold">
             <span className="mr-4">
@@ -146,19 +176,21 @@ const AppointmentForm = () => {
             <span>Leider ist etwas schief gelaufen.</span>
           </div>
         )}
-        <button type="submit" disabled={success ? true : undefined}
-                className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed">
-          <div className="flex justify-between text-ss-p-smbold text-ss-black">
-            <span>
-              Abschicken
-            </span>
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </span>
-          </div>
-        </button>
+        <div className="flex justify-end">
+          <button type="submit" disabled={success ? true : undefined}
+                  className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed">
+            <div className="flex justify-between text-ss-p-smbold text-ss-black">
+              <span>
+                Senden
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </span>
+            </div>
+          </button>
+        </div>
       </form>
       {success && (
         <div className="flex flex-col items-center bg-ss-success text-white rounded p-4 mt-6 font-bold">
