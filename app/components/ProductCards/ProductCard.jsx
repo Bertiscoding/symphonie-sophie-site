@@ -1,7 +1,6 @@
-"use client"
-import Button from "./Button";
-import BackgroundImage from "./BackgroundImage";
-import { formatText } from "../utils/formatText";
+import Button from "../Button";
+import BackgroundImage from "../BackgroundImages/BackgroundImage";
+import { formatText } from "../../utils/formatText";
 
 const ProductCard = (props) => {
   const { bgImgUrl, title, text, link } = props

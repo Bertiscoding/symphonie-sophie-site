@@ -1,12 +1,11 @@
 "use client"
 import { useState } from "react"
 
-const RequestForm = () => {
+const MessageForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    pref_date: '',
     message: '',
   })
 
@@ -21,7 +20,7 @@ const RequestForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('/api/send-email', {
+    const res = await fetch('/api/send-message', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
@@ -41,7 +40,6 @@ const RequestForm = () => {
         name: '',
         email: '',
         phone: '',
-        wunschtermin: '',
         message: '',
       });
     } else {
@@ -56,7 +54,7 @@ const RequestForm = () => {
         <div className="w-full md:flex md:justify-between">
           <div className="w-full md:w-[46%]">
             <label htmlFor="name" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
-              Vorname Nachname:
+              Name:
             </label>
             <input
               type="text"
@@ -70,25 +68,6 @@ const RequestForm = () => {
               placeholder="(erforderlich)"
             />
           </div>
-          <div className="w-full md:w-[46%]">
-            <label htmlFor="email" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
-              E-Mail-Adresse:
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
-              required
-              disabled={success ? true : ""}
-              placeholder="(erforderlich)"
-            />
-          </div>
-        </div>
-
-        <div className="w-full md:flex md:justify-between">
           <div className="w-full md:w-[46%]">
             <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               Telefonnummer:
@@ -104,21 +83,23 @@ const RequestForm = () => {
               placeholder="(optional)"
             />
           </div>
-          <div className="w-full md:w-[46%]">
-            <label htmlFor="wunschtermin" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
-              Mögliche Wunschtermine:
-            </label>
-            <input
-              type="text"
-              id="wunschtermin"
-              name="wunschtermin"
-              value={formData.wunschtermin}
-              onChange={handleChange}
-              className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
-              disabled={success ? true : ""}
-              placeholder="(optional)"
-            />
         </div>
+
+        <div className="w-full">
+          <label htmlFor="email" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+            E-Mail-Adresse:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+            required
+            disabled={success ? true : ""}
+            placeholder="(erforderlich)"
+          />
         </div>
         <div className="w-full">
           <label htmlFor="message" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
@@ -136,6 +117,7 @@ const RequestForm = () => {
             placeholder="(erforderlich)"
           ></textarea>
         </div>
+
         {error && (
           <div className="flex bg-ss-error text-white rounded p-4 font-bold">
             <span className="mr-4">
@@ -150,7 +132,7 @@ const RequestForm = () => {
                 className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed">
           <div className="flex justify-between text-ss-p-smbold text-ss-black">
             <span>
-              Abschicken
+              Senden
             </span>
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -173,4 +155,4 @@ const RequestForm = () => {
     </>
   )
 }
-export default RequestForm
+export default MessageForm

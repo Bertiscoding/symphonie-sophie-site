@@ -1,6 +1,6 @@
 "use client"
 import { formatText } from "../utils/formatText"
-import BackgroundImage from "./BackgroundImage"
+import BackgroundImage from "./BackgroundImages/BackgroundImage"
 import Button from "./Button"
 
 const HighlightSection = (props) => {
