@@ -7,6 +7,11 @@ export const generateMetadata = async (slug) => {
   const { page, meta_description } = metadataRow || {}
 
   return {
+    charset: 'UTF-8',
+    other: {
+      'http-equiv': 'Content-Type',
+      content: 'text/html; charset=UTF-8'
+    },
     title: `${page} | Symphonie Sophie` || "Symphonie Sophie | Aroma Massage & Beratung Berlin",
     description: meta_description || "Studio Symphonie Sophie bietet Aroma Massagen & Beratung an, sowie Beratung zum Einsatz von ätherischen Ölen in Berlin-Neukölln.",
     openGraph: {

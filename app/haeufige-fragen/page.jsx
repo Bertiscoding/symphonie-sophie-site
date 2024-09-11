@@ -22,7 +22,7 @@ const Faq = async ({ params }) => {
     top_section_body,
     top_section_img,
     top_section_btnlink,
-    pricecard_count,
+    pricecard_count
   } = content || {};
 
   const faqItems = [];
@@ -56,10 +56,12 @@ const Faq = async ({ params }) => {
             btnLink={top_section_btnlink}
           />
         )}
-        <div className="w-full md:w-3/4 mx-auto">
-          { faqItems.map((faq, index) => {
-            <Accordion key={index} id={index} title={faq.title} body={faq.body} />
-          })}
+        <div className="bg-ss-seashell">
+          <div className="w-full md:w-3/5 mx-auto grid grid-cols-1 gap-1 py-20">
+            { faqItems.map((faq, index) => (
+              <Accordion key={index} id={index} title={faq.title} body={faq.body} />
+            ))}
+          </div>
         </div>
       </main>
     </>
