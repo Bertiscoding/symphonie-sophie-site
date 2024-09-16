@@ -1,18 +1,23 @@
 import { fetchData } from "@/app/utils/fetchData";
 import { generateMetadata } from "@/app/utils/generateMetadata"
 import BackgroundImgWithText from "../components/BackgroundImages/BackgroundImgWithText";
+import HighlightSection from "../components/HighlightSection";
 import AppointmentForm from "../components/Forms/AppointmentForm";
 
 
 export const metadata = async ({ params }) => {
-  const slug = params?.slug || "/termine"
+  
+  const slug = params?.slug || "/workshop-termine-buchen"
   return generateMetadata(slug)
 }
 
-const Termine = async ({ params }) => {
+const TermineWorkshops = async ({ params }) => {
   const fetchContent = await fetchData();
-  const slug = params?.slug || "/termine";
+  const slug = params?.slug || "/workshop-termine-buchen";
   const content = fetchContent.find((row) => row.slug === slug);
+
+  const servicesSlug = params?.slug || "/workshops"
+  const getServices = fetchContent.find((row) => row.slug === servicesSlug);
   
   const {
     header_img,
@@ -23,9 +28,6 @@ const Termine = async ({ params }) => {
     top_section_btnlink,
   } = content || {};
 
-  const servicesSlug = params?.slug || "/massagen-und-behandlungen"
-  const services = fetchContent.find((row) => row.slug === servicesSlug);
-
   return (
     <>
       <header>
@@ -35,7 +37,7 @@ const Termine = async ({ params }) => {
           wrapperClassNames="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-1/2 mt-4"
         >
           <div className="flex justify-center items-center">
-            <h1 className="text-ss-h1 text-white">{header_title}</h1>
+            <h1 className="text-ss-h1 text-white text-center">{header_title}</h1>
           </div>
         </BackgroundImgWithText>
       </header>
@@ -50,7 +52,7 @@ const Termine = async ({ params }) => {
         )}
         <div className="bg-ss-seashell">
           <div className="max-w-[800px] px-10 py-20 mx-auto">
-            <AppointmentForm services={services}/> 
+            <AppointmentForm services={getServices} /> 
           </div>
         </div>
       </main>
@@ -58,4 +60,4 @@ const Termine = async ({ params }) => {
   )
 };
 
-export default Termine;
+export default TermineWorkshops;

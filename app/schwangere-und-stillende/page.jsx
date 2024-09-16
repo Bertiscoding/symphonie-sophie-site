@@ -7,13 +7,13 @@ import PriceCardCollection from "../components/Pricecards/PriceCardCollection";
 import BlogSection from "../components/BlogSection";
 
 export const metadata = async ({ params }) => {
-  const slug = params?.slug || "/aetherische-oele"
+  const slug = params?.slug || "/schwangere-und-stillende"
   return generateMetadata(slug)
 }
 
-const AetherischeOele = async ({ params }) => {
+const Schwangere = async ({ params }) => {
   const fetchContent = await fetchData();
-  const slug = params?.slug || "/aetherische-oele";
+  const slug = params?.slug || "/schwangere-und-stillende";
   const content = fetchContent.find((row) => row.slug === slug);
 
   const {
@@ -52,17 +52,17 @@ const AetherischeOele = async ({ params }) => {
         )}
 
         { productcard_count && (
-          <ProductCardCollection pageSlug={"/aetherische-oele"} context={content} />
+          <ProductCardCollection pageSlug={"/schwangere-und-stillende"} context={content} />
         )}  
         { pricecard_count && (
-          <PriceCardCollection pageSlug={"/aetherische-oele"} context={content} />
+          <PriceCardCollection pageSlug={"/schwangere-und-stillende"} context={content} />
         )}  
         { blogsection_text && (
-          <BlogSection pageSlug={"/aetherische-oele"} />
+          <BlogSection pageSlug={"/schwangere-und-stillende"} />
         )}
       </main>
     </>
   )
 };
 
-export default AetherischeOele;
+export default Schwangere;

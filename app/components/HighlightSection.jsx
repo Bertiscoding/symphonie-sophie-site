@@ -18,7 +18,7 @@ const HighlightSection = (props) => {
             {btnLink && ( <Button btnLink={btnLink} btnText="Mehr erfahren" /> )}
           </div>
           <div>
-          <BackgroundImage bgImgUrl={img} bgClassNames="rounded"/>
+            <BackgroundImage bgImgUrl={img} bgClassNames="rounded"/>
           </div>
         </div>
       </div>

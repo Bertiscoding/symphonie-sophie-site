@@ -17,11 +17,9 @@ textarea::placeholder {
   font-style: italic;
 }
 
-select {
-  color: #9ca3af;
-  font-size: 12px;
-  font-style: italic;
-}
-option:not(:first-of-type) {
-  color: #181F25;
+.ss-inline-link {
+  text-decoration: underline;
+  text-decoration-color: #92374D;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
 }

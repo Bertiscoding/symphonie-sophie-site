@@ -1,10 +1,12 @@
 "use client"
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const NavItems = (props) => {
   const [navOpen, setNavOpen] = useState(false)
   const navRef = useRef(null)
+  const pathname = usePathname()
 
   const renderNavLinks = props.items
     .filter(element => element.navDisplay === "TRUE")
@@ -13,9 +15,14 @@ const NavItems = (props) => {
         key={i}
         href={el.navLink}
         onClick={() => setNavOpen(!navOpen)}
-        className="text-ss-p-smbold py-2 underline underline-offset-4 decoration-ss-bordeaux cursor-pointer"
+        className="text-ss-p-smbold py-3 cursor-pointer flex items-center"
       >
-        {el.navText}
+        <span className={pathname === el.navLink ? 'text-ss-bordeaux' : ''}>{el.navText}</span>
+        <span className="text-ss-bordeaux mt-[3px]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
+            <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
+          </svg>
+        </span>
       </Link>
     ))
 
@@ -42,7 +49,7 @@ const NavItems = (props) => {
   }`
 
   return (
-    <nav className="bg-ss-champagne h-10 flex items-center fixed top-0 left-0 w-screen z-30 shadow">
+    <nav className="bg-ss-champagne h-10 flex items-center fixed top-0 left-0 w-screen z-30 shadow-lg">
         
         <div className="flex justify-between md:container">
           <Link href="/" className="w-6 h-6">
