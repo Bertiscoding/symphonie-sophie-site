@@ -49,7 +49,7 @@ const NavItems = (props) => {
   }`
 
   return (
-    <nav className="bg-ss-champagne h-10 flex items-center fixed top-0 left-0 w-screen z-30 shadow">
+    <nav className="bg-ss-champagne h-10 flex items-center fixed top-0 left-0 w-screen z-30 shadow-lg">
         
         <div className="flex justify-between md:container">
           <Link href="/" className="w-6 h-6">

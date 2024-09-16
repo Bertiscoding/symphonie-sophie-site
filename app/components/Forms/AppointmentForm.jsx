@@ -116,7 +116,7 @@ const AppointmentForm = (props) => {
         <div className="w-full md:flex md:justify-between">
         <div className="w-full md:w-[46%]">
             <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
-              Behandlung:
+              { `${props.services.header_title}:` }
             </label>
             <select
               id="service"
