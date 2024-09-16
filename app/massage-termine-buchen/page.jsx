@@ -1,20 +1,22 @@
-import { fetchData } from "@/app/utils/fetchData";
+import { fetchData } from "@/app/utils/fetchData"
 import { generateMetadata } from "@/app/utils/generateMetadata"
-import BackgroundImgWithText from "../components/BackgroundImages/BackgroundImgWithText";
-import HighlightSection from "../components/HighlightSection";
-import ProductCardCollection from "../components/ProductCards/ProductCardCollection";
-import PriceCardCollection from "../components/Pricecards/PriceCardCollection";
-import BlogSection from "../components/BlogSection";
+import BackgroundImgWithText from "../components/BackgroundImages/BackgroundImgWithText"
+import HighlightSection from "../components/HighlightSection"
+import AppointmentForm from "../components/Forms/AppointmentForm"
 
-export const metadata = async ({ params }) => {
-  const slug = params?.slug || "/aetherische-oele"
+
+export const metadata = async ({ params }) => {  
+  const slug = params?.slug || "/termine"
   return generateMetadata(slug)
 }
 
-const AetherischeOele = async ({ params }) => {
+const TermineMassagen = async ({ params }) => {
   const fetchContent = await fetchData();
-  const slug = params?.slug || "/aetherische-oele";
+  const slug = params?.slug || "/massage-termine-buchen";
   const content = fetchContent.find((row) => row.slug === slug);
+
+  const servicesSlug = params?.slug || "/massagen-und-behandlungen"
+  const getServices = fetchContent.find((row) => row.slug === servicesSlug);
 
   const {
     header_img,
@@ -23,9 +25,6 @@ const AetherischeOele = async ({ params }) => {
     top_section_body,
     top_section_img,
     top_section_btnlink,
-    productcard_count,
-    pricecard_count,
-    blogsection_text
   } = content || {};
 
   return (
@@ -50,19 +49,14 @@ const AetherischeOele = async ({ params }) => {
             btnLink={top_section_btnlink}
           />
         )}
-
-        { productcard_count && (
-          <ProductCardCollection pageSlug={"/aetherische-oele"} context={content} />
-        )}  
-        { pricecard_count && (
-          <PriceCardCollection pageSlug={"/aetherische-oele"} context={content} />
-        )}  
-        { blogsection_text && (
-          <BlogSection pageSlug={"/aetherische-oele"} />
-        )}
+        <div className="bg-ss-seashell">
+          <div className="max-w-[800px] px-10 py-20 mx-auto">
+            <AppointmentForm services={getServices} /> 
+          </div>
+        </div>
       </main>
     </>
   )
 };
 
-export default AetherischeOele;
+export default TermineMassagen;

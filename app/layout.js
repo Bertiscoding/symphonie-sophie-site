@@ -10,6 +10,7 @@ const notoSans = localFont({
     { path: "./fonts/NotoSans-Italic.woff", weight: "400", style: "italic" },
     { path: "./fonts/NotoSans-Medium.woff", weight: "500", style: "normal" },
     { path: "./fonts/NotoSans-SemiBold.woff", weight: "600", style: "normal" },
+    { path: "./fonts/NotoSans-SemiBoldItalic.woff", weight: "600", style: "italic" },
     { path: "./fonts/NotoSans-Bold.woff", weight: "700", style: "normal" },
   ],
   variable: "--font-noto-sans",

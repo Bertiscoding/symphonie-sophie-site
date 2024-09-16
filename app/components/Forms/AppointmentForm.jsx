@@ -1,12 +1,17 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { getServices } from "@/app/utils/getServices"
 
 const AppointmentForm = (props) => {
+  const getParams = useSearchParams()
+  const item = getParams?.get('item')?.replace(/\s/g, "") || ''
+  const time = getParams?.get('time') || ''
+  const addTime = time?.includes(!"Minuten")
 
   const serviceArray = getServices(props.services)
   
-  const selectServices = serviceArray.map((el, i) => ( 
+  const selectServices = serviceArray.map((el, i) => (
     <option key={i} value={el.value}>{el.text}</option>
   ))
 
@@ -14,18 +19,28 @@ const AppointmentForm = (props) => {
     name: '',
     email: '',
     phone: '',
-    service: '',
-    pref_dates: '',
+    service: item,
+    pref_dates: addTime ? time : '',
     message: '',
   })
 
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prevData) => ({ ...prevData, [name]: value }))
-  }
+  useEffect(() => {
+    if (item || addTime) {
+      setFormData((prevData) => ({
+        ...prevData,
+        service: item,
+        pref_dates: addTime ? time : '',
+      }));
+    }
+  }, [item, addTime, time]);
+
+  const handleChange = (event) => {
+    const {name, value} = event.target
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -106,13 +121,14 @@ const AppointmentForm = (props) => {
             <select
               id="service"
               name="service"
-              className="bg-white w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
+              className={`${formData.service === '' ? 'text-slate-400 text-xs italic' : ''}
+              bg-white w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne`}
               value={formData.service}
               onChange={handleChange}
               required
               disabled={success ? true : ""}
             >
-              <option defaultValue>Bitte wählen... (erforderlich)</option>
+              <option defaultValue hidden>Bitte wählen... (erforderlich)</option>
                 { selectServices }
             </select>
           </div>
