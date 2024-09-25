@@ -35,7 +35,7 @@ const Homepage = async ({ params }) => {
             height={0}
             className="w-[250px] h-auto"
           />
-          <h1 className="text-ss-h1 text-white my-10">{header_title}</h1>
+          <h1 className="text-ss-h1-sm lg:text-ss-h1 text-white my-10">{header_title}</h1>
           <Button
             btnLink="/massagen-und-behandlungen"
             btnClassNames=""
