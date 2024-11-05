@@ -51,7 +51,7 @@ const NavItems = (props) => {
   return (
     <nav className="bg-ss-champagne h-10 flex items-center fixed top-0 left-0 w-screen z-30 shadow-lg">
         
-        <div className="flex justify-between md:container px-0 lg:px-10 xl:px-0">
+        <div className="flex justify-between w-full md:container px-2 md:px-0 lg:px-10 xl:px-0">
           <Link href="/" className="w-6 h-6">
             <span className="fill-ss-black w-full h-full">
               <svg id="Layer_1" dataname="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">

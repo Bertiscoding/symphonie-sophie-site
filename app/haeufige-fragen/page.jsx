@@ -40,10 +40,10 @@ const Faq = async ({ params }) => {
         <BackgroundImgWithText
           bgImgUrl={header_img}
           bgHeight="h-[300px]"
-          wrapperClassNames="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-1/2 mt-4"
+          wrapperClassNames="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-1/2 mt-4 w-[inherit] p-4"
         >
           <div className="flex justify-center items-center">
-            <h1 className="text-ss-h1 text-white text-center">{header_title}</h1>
+            <h1 className="text-ss-h1-md lg:text-ss-h1 text-white text-center">{header_title}</h1>
           </div>
         </BackgroundImgWithText>
       </header>
@@ -56,8 +56,8 @@ const Faq = async ({ params }) => {
             btnLink={top_section_btnlink}
           />
         )}
-        <div className="bg-ss-seashell">
-          <div className="w-full md:w-3/5 mx-auto grid grid-cols-1 gap-1 py-20">
+        <div className="bg-ss-seashell p-4 lg:p-0">
+          <div className="w-full lg:w-3/5 mx-auto grid grid-cols-1 gap-1 py-8 lg:py-20">
             { faqItems.map((faq, index) => (
               <Accordion key={index} id={index} title={faq.title} body={faq.body} />
             ))}

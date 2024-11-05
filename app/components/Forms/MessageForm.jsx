@@ -68,7 +68,7 @@ const MessageForm = () => {
               placeholder="(erforderlich)"
             />
           </div>
-          <div className="w-full md:w-[46%]">
+          <div className="w-full md:w-[46%] mt-4 md:mt-0">
             <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               Telefonnummer:
             </label>

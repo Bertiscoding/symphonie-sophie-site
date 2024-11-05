@@ -51,7 +51,7 @@ const TermineWorkshops = async ({ params }) => {
           />
         )}
         <div className="bg-ss-seashell">
-          <div className="max-w-[800px] px-10 py-20 mx-auto">
+          <div className="max-w-[800px] px-4 lg:px-10 py-8 lg:py-20 mx-auto">
             <AppointmentForm services={getServices} /> 
           </div>
         </div>

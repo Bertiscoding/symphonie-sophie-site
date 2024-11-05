@@ -10,8 +10,8 @@ const Footer = () => {
     <>
       <div id="kontakt-und-termine" className="grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col items-center justify-center">
-          <div className="p-14 bg-ss-seashell">
-            <h3 className="text-ss-h1 mb-12 text-ss-bordeaux">Kontakt</h3>
+          <div className="p-4 lg:p-14 bg-ss-seashell w-full">
+            <h3 className="text-ss-h1 mb-8 lg:mb-12 text-ss-bordeaux">Kontakt</h3>
             <p className="flex text-ss-p-med mb-6">
               <span className="fill-ss-bordeaux w-5 h-5 mr-4 mt-[2.5px]">
                 <svg id="Layer_1" dataname="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -54,24 +54,24 @@ const Footer = () => {
         <BackgroundImgWithText
           bgImgUrl="https://res.cloudinary.com/dxon4wo2t/image/upload/v1725812699/samples/cup-on-a-table.jpg"
           bgWidth="w-auto"
-          bgWtClassNames="p-10"
+          bgWtClassNames="p-4 lg:p-10"
         >
-          <div className="w-full md:w-[500px] min-h-[520px]">
-            <h3 className="text-ss-h1 mb-8 text-ss-seashell">Allgemeine Anfragen</h3>
+          <div className="w-full md:w-[500px] md:min-h-[520px]">
+            <h3 className="text-ss-h1-md lg:text-ss-h1 mb-8 text-ss-seashell text-center lg:text-left">Allgemeine Anfragen</h3>
             <MessageForm />
           </div>
         </BackgroundImgWithText>
 
       </div>
-      <div className="bg-ss-black p-10">
-        <div className="container md:flex md:justify-between">
-          <div className="text-white text-xs font-semibold flex flex-col">
+      <div className="bg-ss-black p-4 lg:p-10">
+        <div className="container flex justify-between">
+          <div className="text-white text-xs font-semibold flex flex-col w-fit">
             <Link className="mb-6" href='/impressum'>Impressum</Link>
             <Link className="mb-6" href='/datenschutz'>Datenschutz</Link>
             <Link className="mb-6" href='/haeufige-fragen'>Häufige Fragen</Link>
             <Link className="mb-6" href='/preise'>Preise</Link>
           </div>
-          <div className="flex flex-col justify-between items-end">
+          <div className="flex flex-col justify-between items-end  w-fit">
             <span className="fill-ss-champagne w-14 h-14 my-2">
               <svg id="Layer_1" dataname="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
                 <path className="cls-1" d="m22.57,119.62s0,0,0,0c.31.21.68.27,1.04.15,2.24-.74,7.6-2.68,9.01-4.71,1.78-2.56,1.14-6.09-1.42-7.87-2.56-1.78-6.09-1.14-7.87,1.42-1.41,2.03-1.35,7.73-1.26,10.09.02.37.2.7.51.92Z"/>

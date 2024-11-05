@@ -44,9 +44,9 @@ const BlogSection = async (props) => {
         )}
       </>
     )}
-    <section>
-      <div className="md:w-1/2 mx-auto">
-        <h4 className="text-ss-p-smbold italic leading-7 my-10">
+    <section className="p-4 lg:p-0">
+      <div className="w-full md:w-1/2 mx-auto">
+        <h4 className="text-ss-p-smbold italic leading-7 my-4 lg:my-10">
           {formatText(blogsection_teaser)}
         </h4>
       </div>
@@ -58,8 +58,8 @@ const BlogSection = async (props) => {
       </div>
     </section>
     {blogsection_bottomImg && (
-      <div className="py-20 w-screen bg-ss-seashell">
-        <div className="md:w-1/2 mx-auto h-[430px]">
+      <div className="py-8 lg:py-20 px-4 lg:px-0 w-screen bg-ss-seashell">
+        <div className="md:w-1/2 mx-auto h-[270px] lg:h-[430px]">
           <BackgroundImage bgImgUrl={blogsection_bottomImg} bgClassNames="rounded-lg" />
         </div>
       </div>
