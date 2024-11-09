@@ -32,7 +32,7 @@ const Accordion = (props) => {
         </span>
       </div>
 
-      <div className={`px-4 lg:px-10 pt-6 bg-ss-eggschell overflow-hidden transition-max-height duration-500 ease-in-out
+      <div className={`px-4 lg:px-10 pt-6 bg-ss-eggshell overflow-hidden transition-max-height duration-500 ease-in-out
         ${ openIndex === index ? 'max-h-screen' : 'max-h-16 lg:max-h-10' }`}
       >
         <div className="pb-6">

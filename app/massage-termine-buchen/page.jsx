@@ -6,7 +6,7 @@ import AppointmentForm from "../components/Forms/AppointmentForm"
 
 
 export const metadata = async ({ params }) => {  
-  const slug = params?.slug || "/termine"
+  const slug = params?.slug || "/massage-termine-buchen"
   return generateMetadata(slug)
 }
 

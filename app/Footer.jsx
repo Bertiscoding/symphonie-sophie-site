@@ -9,9 +9,10 @@ const Footer = () => {
   return (
     <>
       <div id="kontakt-und-termine" className="grid grid-cols-1 md:grid-cols-2">
-        <div className="flex flex-col items-center justify-center">
-          <div className="p-4 lg:p-14 bg-ss-seashell w-full">
-            <h3 className="text-ss-h1 mb-8 lg:mb-12 text-ss-bordeaux">Kontakt</h3>
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="p-4 md:p-14 bg-ss-seashell w-full h-[inherit]">
+            <div className="border-t border-white pb-8 md:hidden"></div>
+            <h3 className="text-ss-h1 mb-8 md:mb-12 text-ss-bordeaux">Kontakt</h3>
             <p className="flex text-ss-p-med mb-6">
               <span className="fill-ss-bordeaux w-5 h-5 mr-4 mt-[2.5px]">
                 <svg id="Layer_1" dataname="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -54,16 +55,16 @@ const Footer = () => {
         <BackgroundImgWithText
           bgImgUrl="https://res.cloudinary.com/dxon4wo2t/image/upload/v1725812699/samples/cup-on-a-table.jpg"
           bgWidth="w-auto"
-          bgWtClassNames="p-4 lg:p-10"
+          bgWtClassNames="p-4 md:p-10"
         >
           <div className="w-full md:w-[500px] md:min-h-[520px]">
-            <h3 className="text-ss-h1-md lg:text-ss-h1 mb-8 text-ss-seashell text-center lg:text-left">Allgemeine Anfragen</h3>
+            <h3 className="text-ss-h1-md md:text-ss-h1 mb-8 text-ss-seashell text-center md:text-left">Allgemeine Anfragen</h3>
             <MessageForm />
           </div>
         </BackgroundImgWithText>
 
       </div>
-      <div className="bg-ss-black p-4 lg:p-10">
+      <div className="bg-ss-black p-4 md:p-10">
         <div className="container flex justify-between">
           <div className="text-white text-xs font-semibold flex flex-col w-fit">
             <Link className="mb-6" href='/impressum'>Impressum</Link>

@@ -45,12 +45,12 @@ const BlogSection = async (props) => {
       </>
     )}
     <section className="p-4 lg:p-0">
-      <div className="w-full md:w-1/2 mx-auto">
+      <div className="w-full lg:w-1/2 mx-auto">
         <h4 className="text-ss-p-smbold italic leading-7 my-4 lg:my-10">
           {formatText(blogsection_teaser)}
         </h4>
       </div>
-      <div className="md:w-3/5 mx-auto">
+      <div className="lg:w-3/5 mx-auto">
         <p className="text-ss-p-reg">{formatText(blogsection_text)}</p>
         <div className="flex justify-center my-10">
           <Button btnLink={blogsection_btnlink} btnText="Mehr erfahren" />
@@ -59,7 +59,7 @@ const BlogSection = async (props) => {
     </section>
     {blogsection_bottomImg && (
       <div className="py-8 lg:py-20 px-4 lg:px-0 w-screen bg-ss-seashell">
-        <div className="md:w-1/2 mx-auto h-[270px] lg:h-[430px]">
+        <div className="lg:w-1/2 mx-auto h-[270px] lg:h-[430px]">
           <BackgroundImage bgImgUrl={blogsection_bottomImg} bgClassNames="rounded-lg" />
         </div>
       </div>

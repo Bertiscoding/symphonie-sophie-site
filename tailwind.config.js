@@ -8,13 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "ss-eggschell": "#FBFAF9",
+        "ss-eggshell": "#FBFAF9",
         "ss-seashell": "#F8EDEB",
         "ss-champagne": "#F9DCC4",
         "ss-peach": "#FEC89A",
         "ss-green": "#C3E6B7",
         "ss-green-mute": "#AFD0A4",
         "ss-black": "#181F25",
+        "ss-black-mute": "#495D6F",
         "ss-bordeaux": "#92374D",
         "ss-error": "#EA526F",
         "ss-success": "#69B578"
