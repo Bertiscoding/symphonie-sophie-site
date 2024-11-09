@@ -16,7 +16,7 @@ const AppointmentFormContent = (props) => {
       service: props.item,
       pref_dates: props.time,
       message: '',
-      dsgvo: false,
+      apptdsgvo: false,
     },
     "/api/send-booking"
   )
@@ -27,7 +27,7 @@ const AppointmentFormContent = (props) => {
     <option key={i} value={el.value}>{el.text}</option>
   ))
 
-  const { name, email, phone, service, pref_dates, message, dsgvo } = formData
+  const { name, email, phone, service, pref_dates, message, apptdsgvo } = formData
 
   return (
     <>
@@ -137,7 +137,8 @@ const AppointmentFormContent = (props) => {
 
         <div className="w-full">
           <DsgvoCheckbox
-            dsgvo={dsgvo}
+            name="apptdsgvo"
+            dsgvo={apptdsgvo}
             handleChange={handleChange}
             textColor="text-ss-black-mute"
           />

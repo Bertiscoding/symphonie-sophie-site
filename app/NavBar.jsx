@@ -91,6 +91,18 @@ const NavItems = (props) => {
             <div className="mt-2">
               <div className="flex flex-col items-end justify-around max-h-screen">
                 {renderNavLinks}
+                <Link
+                  href="#kontakt-und-anfragen"
+                  onClick={() => setNavOpen(!navOpen)}
+                  className="text-ss-p-smbold py-3 cursor-pointer flex items-center"
+                >
+                  <span>Kontakt</span>
+                  <span className="text-ss-bordeaux mt-[3px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
+                      <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
+                    </svg>
+                  </span>
+                </Link>
               </div>
             </div>
           )}

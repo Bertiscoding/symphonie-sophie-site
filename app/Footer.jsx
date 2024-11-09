@@ -8,7 +8,7 @@ const MessageForm = dynamic(() => import("./components/Forms/MessageForm"), { ss
 const Footer = () => {
   return (
     <>
-      <div id="kontakt-und-termine" className="grid grid-cols-1 md:grid-cols-2">
+      <div id="kontakt-und-anfragen" className="grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col items-center justify-center h-full">
           <div className="p-4 md:p-14 bg-ss-seashell w-full h-[inherit]">
             <div className="border-t border-white pb-8 md:hidden"></div>

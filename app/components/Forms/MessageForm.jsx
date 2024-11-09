@@ -13,7 +13,7 @@ const MessageForm = () => {
       email: '',
       phone: '',
       message: '',
-      dsgvo: false,
+      msgdsgvo: false,
     },
     "/api/send-message"
   )
@@ -23,7 +23,7 @@ const MessageForm = () => {
 
   if (!isClient) return null
 
-  const { name, email, phone, message, dsgvo } = formData
+  const { name, email, phone, message, msgdsgvo } = formData
 
   return (
     <>
@@ -96,7 +96,8 @@ const MessageForm = () => {
         </div>
         <div className="w-full">
           <DsgvoCheckbox
-            dsgvo={dsgvo}
+            name="msgdsgvo"
+            dsgvo={msgdsgvo}
             handleChange={handleChange}
             textColor="text-ss-eggshell"
           />

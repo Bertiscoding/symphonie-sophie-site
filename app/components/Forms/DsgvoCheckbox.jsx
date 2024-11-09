@@ -1,11 +1,11 @@
-const DsgvoCheckbox = ({ textColor, dsgvo, handleChange }) => {
+const DsgvoCheckbox = ({ name, textColor, dsgvo, handleChange }) => {
   return (
     <div className="flex align-top cursor-pointer md:mx-3">
       <div className="mr-4">
         <input
-            id="dsgvo"
+            id={name}
             type="checkbox"
-            name="dsgvo"
+            name={name}
             required
             checked={dsgvo}
             onChange={handleChange}
@@ -17,7 +17,7 @@ const DsgvoCheckbox = ({ textColor, dsgvo, handleChange }) => {
             `}
           />
       </div>
-      <label htmlFor="dsgvo" className="w-fit md:w-[90%]">
+      <label htmlFor={name} className="w-fit md:w-[90%]">
         <p className={`text-xs italic ${textColor}`}>
           Ich erkläre mich einverstanden, dass meine oben angegebenen personenbezogenen Daten genutzt werden zur Korrespondenz von Anfragen. Die Pflichtangaben dienen der Zuordnung und der Beantwortung Deines Anliegen. 
           Dies entspricht unserem berechtigten Interesse (Art. 6 Abs. 1 lit f DSGVO).
