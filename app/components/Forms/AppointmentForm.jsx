@@ -18,7 +18,8 @@ const AppointmentFormContent = (props) => {
       message: '',
       apptdsgvo: false,
     },
-    "/api/send-booking"
+    "/api/send-booking",
+    ['name', 'email', 'service', 'pref_dates', 'apptdsgvo']
   )
 
   const serviceArray = getServices(props.services)

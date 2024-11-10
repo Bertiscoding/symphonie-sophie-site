@@ -15,8 +15,10 @@ const MessageForm = () => {
       message: '',
       msgdsgvo: false,
     },
-    "/api/send-message"
+    "/api/send-message",
+    ['name', 'email', 'message', 'msgdsgvo']
   )
+
   useEffect(() => {
     setIsClient(true)
   }, [])

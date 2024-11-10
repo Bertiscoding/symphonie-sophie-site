@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const useFormHandler = (initialFormData, submitUrl) => {
+const useFormHandler = (initialFormData, submitUrl, requiredFields) => {
 
   const [formData, setFormData] = useState(initialFormData)
   const [btnDisabled, setBtnDisabled] = useState(true)
@@ -16,8 +16,8 @@ const useFormHandler = (initialFormData, submitUrl) => {
   }
 
   useEffect(() => {
-    setBtnDisabled(Object.values(formData).some(field => !field))
-  }, [formData])
+    setBtnDisabled(requiredFields.some(field => !formData[field]))
+  }, [formData, requiredFields])
 
   const handleSubmit = async (e) => {
     e.preventDefault
