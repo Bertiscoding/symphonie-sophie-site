@@ -12,14 +12,14 @@ const Accordion = (props) => {
   };
 
   return (
-    <div className="w-full mb-6">
+    <div className="w-full mb-6 border-b border-ss-green-mute">
 
       <div
         onClick={() => toggleAccordion(index)}
-        className="bg-ss-champagne rounded-tl-lg rounded-tr-lg drop-shadow-md cursor-pointer flex justify-between items-center px-10"
+        className="bg-ss-green rounded-tl-lg rounded-tr-lg drop-shadow-md cursor-pointer flex justify-between items-center px-10"
       >
-        <h2 className="text-ss-h2 text-ss-bordeaux my-2">{title}</h2>
-        <span className="text-ss-bordeaux">
+        <h2 className="text-ss-h2 text-ss-black my-2">{title}</h2>
+        <span className="text-ss-black">
           {(openIndex === index) ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
@@ -32,8 +32,8 @@ const Accordion = (props) => {
         </span>
       </div>
 
-      <div className={`px-10 pt-6 bg-ss-eggschell overflow-hidden transition-max-height duration-500 ease-in-out
-        ${ openIndex === index ? 'max-h-screen' : 'max-h-10' }`}
+      <div className={`px-4 lg:px-10 pt-6 bg-ss-eggshell overflow-hidden transition-max-height duration-500 ease-in-out
+        ${ openIndex === index ? 'max-h-screen' : 'max-h-16 lg:max-h-10' }`}
       >
         <div className="pb-6">
           <p className="text-ss-p-reg">{formatText(body)}</p>

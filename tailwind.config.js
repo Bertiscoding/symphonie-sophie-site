@@ -8,13 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "ss-eggschell": "#FBFAF9",
+        "ss-eggshell": "#FBFAF9",
         "ss-seashell": "#F8EDEB",
         "ss-champagne": "#F9DCC4",
         "ss-peach": "#FEC89A",
         "ss-green": "#C3E6B7",
         "ss-green-mute": "#AFD0A4",
         "ss-black": "#181F25",
+        "ss-black-mute": "#495D6F",
         "ss-bordeaux": "#92374D",
         "ss-error": "#EA526F",
         "ss-success": "#69B578"
@@ -26,7 +27,10 @@ module.exports = {
       },
       fontSize: {
         'ss-h1': ['36px', { fontWeight: '600' }],
+        'ss-h1-md': ['32px', { fontWeight: '600' }],
+        'ss-h1-sm': ['28px', { fontWeight: '600' }],
         'ss-h2': ['24px', { fontWeight: '600' }],
+        'ss-h2-sm': ['20px', { fontWeight: '600' }],
         'ss-h3': ['24px', { fontWeight: '500' }],
         'ss-p-med': ['16px', { fontWeight: '500' }],
         'ss-p-reg': ['16px', { fontWeight: '400' }],

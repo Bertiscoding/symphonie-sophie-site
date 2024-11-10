@@ -26,7 +26,7 @@ const Homepage = async ({ params }) => {
         <BackgroundImgWithText
           bgImgUrl={header_img}
           bgHeight="h-[400px]"
-          wrapperClassNames="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-1/2 mt-4"
+          wrapperClassNames="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-1/2 mt-4 w-full"
         >
           <Image
             src="/images/symphonie-sophie-logo-lg_white.svg"
@@ -35,7 +35,7 @@ const Homepage = async ({ params }) => {
             height={0}
             className="w-[250px] h-auto"
           />
-          <h1 className="text-ss-h1 text-white my-10">{header_title}</h1>
+          <h1 className="text-ss-h1-md lg:text-ss-h1 text-white my-10 w-full text-center">{header_title}</h1>
           <Button
             btnLink="/massagen-und-behandlungen"
             btnClassNames=""

@@ -1,13 +1,26 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
+import useFormHandler from "@/app/hooks/useFormHandler"
 import { useSearchParams } from "next/navigation"
 import { getServices } from "@/app/utils/getServices"
+import DsgvoCheckbox from "./DsgvoCheckbox"
+import Loader from "../Loader"
 
-const AppointmentForm = (props) => {
-  const getParams = useSearchParams()
-  const item = getParams?.get('item')?.replace(/\s/g, "") || ''
-  const time = getParams?.get('time') || ''
-  const addTime = time?.includes(!"Minuten")
+const AppointmentFormContent = (props) => {
+  const { formData, handleChange, handleSubmit, btnDisabled, error, success } =
+  useFormHandler(
+    {
+      name: '',
+      email: '',
+      phone: '',
+      service: props.item,
+      pref_dates: props.time,
+      message: '',
+      apptdsgvo: false,
+    },
+    "/api/send-booking",
+    ['name', 'email', 'service', 'pref_dates', 'apptdsgvo']
+  )
 
   const serviceArray = getServices(props.services)
   
@@ -15,72 +28,13 @@ const AppointmentForm = (props) => {
     <option key={i} value={el.value}>{el.text}</option>
   ))
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: item,
-    pref_dates: addTime ? time : '',
-    message: '',
-  })
-
-  const [error, setError] = useState(false)
-  const [success, setSuccess] = useState(false)
-
-  useEffect(() => {
-    if (item || addTime) {
-      setFormData((prevData) => ({
-        ...prevData,
-        service: item,
-        pref_dates: addTime ? time : '',
-      }));
-    }
-  }, [item, addTime, time]);
-
-  const handleChange = (event) => {
-    const {name, value} = event.target
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const res = await fetch('/api/send-booking', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (res.ok) {
-      setTimeout(() => {
-        setSuccess(true);
-
-        setTimeout(() => {
-          setSuccess(false);
-        }, 7000);
-    
-      }, 10000); 
-      setError(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        pref_dates: '',
-        message: '',
-        message: '',
-      });
-    } else {
-      setSuccess(false);
-      setError(true);
-    }
-  };
+  const { name, email, phone, service, pref_dates, message, apptdsgvo } = formData
 
   return (
     <>
       <form onSubmit={handleSubmit} className="space-y-4 text-ss-p-med">
-        <div className="w-full md:flex md:justify-between">
-          <div className="w-full md:w-[46%]">
+        <div className="w-full lg:flex lg:justify-between">
+          <div className="w-full lg:w-[46%]">
             <label htmlFor="name" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               Name:
             </label>
@@ -88,15 +42,15 @@ const AppointmentForm = (props) => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
+              value={name}
               onChange={handleChange}
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               required
-              disabled={success ? true : ""}
+              disabled={success}
               placeholder="(erforderlich)"
             />
           </div>
-          <div className="w-full md:w-[46%]">
+          <div className="w-full lg:w-[46%] mt-4 lg:mt-0">
             <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               Telefonnummer:
             </label>
@@ -104,18 +58,18 @@ const AppointmentForm = (props) => {
               type="tel"
               id="phone"
               name="phone"
-              value={formData.phone}
+              value={phone}
               onChange={handleChange}
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
-              disabled={success ? true : ""}
+              disabled={success}
               placeholder="(optional)"
             />
           </div>
         </div>
 
-        <div className="w-full md:flex md:justify-between">
-        <div className="w-full md:w-[46%]">
-            <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+        <div className="w-full lg:flex lg:justify-between">
+        <div className="w-full lg:w-[46%]">
+            <label htmlFor="service" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               { `${props.services.header_title}:` }
             </label>
             <select
@@ -123,28 +77,28 @@ const AppointmentForm = (props) => {
               name="service"
               className={`${formData.service === '' ? 'text-slate-400 text-xs italic' : ''}
               bg-white w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne`}
-              value={formData.service}
+              value={service}
               onChange={handleChange}
               required
-              disabled={success ? true : ""}
+              disabled={success}
             >
-              <option defaultValue hidden>Bitte wählen... (erforderlich)</option>
+              <option value="" disabled>Bitte wählen... (erforderlich)</option>
                 { selectServices }
             </select>
           </div>
-          <div className="w-full md:w-[46%]">
-            <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
+          <div className="w-full lg:w-[46%] mt-4 lg:mt-0">
+            <label htmlFor="pref_dates" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               Wunschtermine:
             </label>
             <input
-              type="tel"
+              type="text"
               id="pref_dates"
               name="pref_dates"
-              value={formData.pref_dates}
+              value={pref_dates}
               onChange={handleChange}
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               required
-              disabled={success ? true : ""}
+              disabled={success}
               placeholder="(erforderlich)"
             />
           </div>
@@ -158,11 +112,11 @@ const AppointmentForm = (props) => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
+            value={email}
             onChange={handleChange}
             className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
             required
-            disabled={success ? true : ""}
+            disabled={success}
             placeholder="(erforderlich)"
           />
         </div>
@@ -173,13 +127,22 @@ const AppointmentForm = (props) => {
           <textarea
             id="message"
             name="message"
-            value={formData.message}
+            value={message}
             onChange={handleChange}
             className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
             rows={4}
-            disabled={success ? true : ""}
+            disabled={success}
             placeholder="(optional)"
           ></textarea>
+        </div>
+
+        <div className="w-full">
+          <DsgvoCheckbox
+            name="apptdsgvo"
+            dsgvo={apptdsgvo}
+            handleChange={handleChange}
+            textColor="text-ss-black-mute"
+          />
         </div>
 
         {error && (
@@ -192,9 +155,13 @@ const AppointmentForm = (props) => {
             <span>Leider ist etwas schief gelaufen.</span>
           </div>
         )}
+
         <div className="flex justify-end">
-          <button type="submit" disabled={success ? true : undefined}
-                  className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed">
+          <button
+            type="submit"
+            disabled={btnDisabled}
+            className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <div className="flex justify-between text-ss-p-smbold text-ss-black">
               <span>
                 Senden
@@ -208,6 +175,7 @@ const AppointmentForm = (props) => {
           </button>
         </div>
       </form>
+
       {success && (
         <div className="flex flex-col items-center bg-ss-success text-white rounded p-4 mt-6 font-bold">
           <span className="mb-4">
@@ -218,7 +186,33 @@ const AppointmentForm = (props) => {
           <span className="text-center">Nachricht wurde verschickt.<br/> Ich werde mich umgehend bei Dir melden.</span>
         </div>
       )}
+
     </>
   )
 }
+
+const AppointmentForm = (props) => {
+  const getParams = useSearchParams()
+  const [item, setItem] = useState('')
+  const [time, setTime] = useState('')
+
+  useEffect(() => {
+    const itemParam = getParams.get('item')
+    const timeParam = getParams.get('time')
+    
+    setItem(itemParam ? itemParam.replace(/\s/g, "") : '')
+    setTime(timeParam || '')
+  }, [getParams])
+
+  if (!item && !time) {
+    return <Loader />;
+  }
+
+  return (
+    <Suspense fallback={ <Loader /> }>
+      <AppointmentFormContent {...props} item={item} time={time} />
+    </Suspense>
+  )
+}
+
 export default AppointmentForm

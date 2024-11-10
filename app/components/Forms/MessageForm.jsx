@@ -1,58 +1,37 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import useFormHandler from "@/app/hooks/useFormHandler"
+import DsgvoCheckbox from "./DsgvoCheckbox"
 
 const MessageForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  })
+  const [isClient, setIsClient] = useState(false)
 
-  const [error, setError] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const { formData, handleChange, handleSubmit, btnDisabled, error, success } =
+  useFormHandler(
+    {
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      msgdsgvo: false,
+    },
+    "/api/send-message",
+    ['name', 'email', 'message', 'msgdsgvo']
+  )
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prevData) => ({ ...prevData, [name]: value }))
-  }
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  if (!isClient) return null
 
-    const res = await fetch('/api/send-message', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (res.ok) {
-      setTimeout(() => {
-        setSuccess(true);
-
-        setTimeout(() => {
-          setSuccess(false);
-        }, 7000);
-    
-      }, 10000); 
-      setError(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-      });
-    } else {
-      setSuccess(false);
-      setError(true);
-    }
-  };
+  const { name, email, phone, message, msgdsgvo } = formData
 
   return (
     <>
       <form onSubmit={handleSubmit} className="space-y-4 text-ss-p-med">
-        <div className="w-full md:flex md:justify-between">
-          <div className="w-full md:w-[46%]">
+        <div className="w-full lg:flex lg:justify-between">
+          <div className="w-full lg:w-[46%]">
             <label htmlFor="name" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               Name:
             </label>
@@ -60,15 +39,15 @@ const MessageForm = () => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
+              value={name}
               onChange={handleChange}
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
               required
-              disabled={success ? true : ""}
+              disabled={success}
               placeholder="(erforderlich)"
             />
           </div>
-          <div className="w-full md:w-[46%]">
+          <div className="w-full lg:w-[46%] mt-4 lg:mt-0">
             <label htmlFor="phone" className="inline-block w-full py-0.5 px-2 rounded-t text-ss-p-smbold text-ss-bordeaux bg-ss-champagne">
               Telefonnummer:
             </label>
@@ -76,10 +55,10 @@ const MessageForm = () => {
               type="tel"
               id="phone"
               name="phone"
-              value={formData.phone}
+              value={phone}
               onChange={handleChange}
               className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
-              disabled={success ? true : ""}
+              disabled={success}
               placeholder="(optional)"
             />
           </div>
@@ -93,11 +72,11 @@ const MessageForm = () => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
+            value={email}
             onChange={handleChange}
             className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
             required
-            disabled={success ? true : ""}
+            disabled={success}
             placeholder="(erforderlich)"
           />
         </div>
@@ -108,14 +87,22 @@ const MessageForm = () => {
           <textarea
             id="message"
             name="message"
-            value={formData.message}
+            value={message}
             onChange={handleChange}
             className="w-full rounded-b p-2 disabled:bg-slate-400 disabled:opacity-30 border border-ss-champagne"
             rows={4}
             required
-            disabled={success ? true : ""}
+            disabled={success}
             placeholder="(erforderlich)"
           ></textarea>
+        </div>
+        <div className="w-full">
+          <DsgvoCheckbox
+            name="msgdsgvo"
+            dsgvo={msgdsgvo}
+            handleChange={handleChange}
+            textColor="text-ss-eggshell"
+          />
         </div>
 
         {error && (
@@ -128,9 +115,13 @@ const MessageForm = () => {
             <span>Leider ist etwas schief gelaufen.</span>
           </div>
         )}
+
         <div className="flex justify-end">
-          <button type="submit" disabled={success ? true : undefined}
-                  className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed">
+          <button
+            type="submit"
+            disabled={btnDisabled}
+            className="bg-ss-green hover:bg-ss-green-mute block rounded min-w-52 w-fit py-1.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <div className="flex justify-between text-ss-p-smbold text-ss-black">
               <span>
                 Senden
@@ -144,6 +135,7 @@ const MessageForm = () => {
           </button>
         </div>
       </form>
+
       {success && (
         <div className="flex flex-col items-center bg-ss-success text-white rounded p-4 mt-6 font-bold">
           <span className="mb-4">
@@ -154,6 +146,7 @@ const MessageForm = () => {
           <span className="text-center">Nachricht wurde verschickt.<br/> Ich werde mich umgehend bei Dir melden.</span>
         </div>
       )}
+
     </>
   )
 }

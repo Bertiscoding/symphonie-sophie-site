@@ -8,7 +8,7 @@ const ProductCard = (props) => {
   return (
     <div className="relative">
       <div className="h-[120px] w-[250px]">
-        <BackgroundImage bgImgUrl={bgImgUrl} bgClassNames="rounded-lg absolute top-[45px] left-[48px]"/>
+        <BackgroundImage bgImgUrl={bgImgUrl} bgClassNames="rounded-lg absolute top-[45px] left-[48px] h-full"/>
       </div>
       <div className="h-[340px] w-[346px] bg-white pt-16 rounded shadow-md flex flex-col items-center">
         <h2 className="text-ss-h2 text-ss-bordeaux text-center">{title}</h2>

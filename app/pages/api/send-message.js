@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { name, email, phone, wunschtermin, message } = req.body;
+    const { name, email, phone, message, msgdsgvo } = req.body;
 
     // Create a transporter using your email service (e.g., Gmail, SMTP server)
     const transporter = nodemailer.createTransport({
@@ -21,8 +21,9 @@ export default async function handler(req, res) {
         text: `
           Name: ${name}
           Email: ${email}
-          Phone: ${phone}
+          Phone: ${phone ? phone : ''}
           Message: ${message}
+          DSGVO: ${msgdsgvo ? 'zugestimmt' : 'abgelehnt'}
         `,
       });
 
