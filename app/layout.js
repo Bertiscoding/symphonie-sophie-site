@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
+import { CookieProvider } from "./context/CookieContext";
 
 const notoSans = localFont({
   src: [
@@ -44,9 +45,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de">
       <body className={`${notoSans.variable} antialiased relative`}>
-        <Navigation />
-        {children}
-        <Footer />
+        <CookieProvider>
+          <Navigation />
+          {children}
+          <Footer />
+        </CookieProvider>
       </body>
     </html>
   );

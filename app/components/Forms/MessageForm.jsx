@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import useFormHandler from "@/app/hooks/useFormHandler"
-import DsgvoCheckbox from "./DsgvoCheckbox"
+import Checkbox from "../Checkbox"
 
 const MessageForm = () => {
   const [isClient, setIsClient] = useState(false)
@@ -97,11 +97,16 @@ const MessageForm = () => {
           ></textarea>
         </div>
         <div className="w-full">
-          <DsgvoCheckbox
+          <Checkbox
             name="msgdsgvo"
             dsgvo={msgdsgvo}
             handleChange={handleChange}
             textColor="text-ss-eggshell"
+            required={true}
+            disabled={success}
+            labelText="Ich erkläre mich einverstanden, dass meine oben angegebenen personenbezogenen Daten genutzt werden zur Korrespondenz von Anfragen. Die Pflichtangaben dienen der Zuordnung und der Beantwortung Deines Anliegen. 
+            Dies entspricht unserem berechtigten Interesse (Art. 6 Abs. 1 lit f DSGVO)."
+            labelTextClasses="text-xs italic"
           />
         </div>
 
